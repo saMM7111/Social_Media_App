@@ -1,5 +1,6 @@
 package com.sam.socialmediaapp.service;
 
+import com.sam.socialmediaapp.Expections.UserException;
 import com.sam.socialmediaapp.models.User;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +11,13 @@ public interface UserService {
 
     public User registerUser(User user);
 
-    public User findUserById(Integer userid) throws Exception;
+    public User findUserById(Integer userid) throws UserException;
 
     public User findByEmail(String email);
 
-    public User followUser(Integer userid1, Integer userid2) throws Exception;
+    public User followUser(Integer userid1, Integer userid2) throws UserException;
 
-    public User updateUser(User user, Integer userid) throws Exception;
+    public User updateUser(User user, Integer userid) throws UserException;
 
     public List<User> searchUser(String query);
 

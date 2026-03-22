@@ -1,5 +1,6 @@
 package com.sam.socialmediaapp.service;
 
+import com.sam.socialmediaapp.Expections.UserException;
 import com.sam.socialmediaapp.Repository.UserRepository;
 import com.sam.socialmediaapp.config.JwtProvider;
 import com.sam.socialmediaapp.models.User;
@@ -27,13 +28,13 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User findUserById(Integer userid) throws Exception {
+    public User findUserById(Integer userid) throws UserException {
         Optional<User> user = userRepository.findById(userid);
         if(user.isPresent()){
             return user.get();
         }
 
-        throw new Exception("user not exist with userid: "+userid);
+        throw new UserException("user not exist with userid: "+userid);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User followUser(Integer reqUserid, Integer userid2) throws Exception {
+    public User followUser(Integer reqUserid, Integer userid2) throws UserException {
         User reqUser = findUserById(reqUserid);
         User user2 = findUserById(userid2);
 
@@ -54,11 +55,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User updateUser(User user,  Integer userid) throws Exception {
+    public User updateUser(User user,  Integer userid) throws UserException {
         Optional<User> user1 =  userRepository.findById(userid);
 
         if(user1.isEmpty()){
-            throw new Exception("user doesn't exist with userid: "+userid);
+            throw new UserException("user doesn't exist with userid: "+userid);
         }
 
         User oldUser = user1.get();
