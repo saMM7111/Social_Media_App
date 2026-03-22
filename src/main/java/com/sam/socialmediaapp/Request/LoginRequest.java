@@ -1,4 +1,4 @@
-package com.sam.socialmediaapp.resopnse;
+package com.sam.socialmediaapp.Request;
 
 public class LoginRequest {
 
