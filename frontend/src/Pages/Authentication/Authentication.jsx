@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from '@mui/material'
-import Login from './Login'
 import Register from './Register'
+import Login from './Login'
 
 const Authentication = () => {
   return (
@@ -22,8 +22,8 @@ const Authentication = () => {
               Connecting Lives, Sharing Stories: Your Social World, Your Way
             </p>
           </div>
-          {/* <Login /> */}
-          <Register />
+          <Login />
+          {/* <Register /> */}
         </Card>
       </div>
     </div>
