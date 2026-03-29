@@ -61,7 +61,6 @@ const Postcard = () => {
           <IconButton>
           {true ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
-
         </div>
       </CardActions>
     </Card>
