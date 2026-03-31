@@ -2,6 +2,9 @@ import React from 'react'
 import { Card } from '@mui/material'
 import Register from './Register'
 import Login from './Login'
+import { Route } from 'react-router-dom'
+import { Routes } from 'react-router-dom'
+
 
 const Authentication = () => {
   return (
@@ -22,8 +25,12 @@ const Authentication = () => {
               Connecting Lives, Sharing Stories: Your Social World, Your Way
             </p>
           </div>
-          <Login />
-          {/* <Register /> */}
+
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
         </Card>
       </div>
     </div>
