@@ -6,8 +6,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Card } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
+  const navigate = useNavigate();
+  const {auth} = useSelector(store => store);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -15,6 +19,10 @@ export const Sidebar = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleNavigate = (item) => {
+    if (!item.path) return;
+    navigate(item.path);
   };
   return (
     <Card className='card h-screen flex flex-col justify-between py-5'>
@@ -28,7 +36,8 @@ export const Sidebar = () => {
         </div>
 
         <div className='space-y-8'>
-          {navigationMenu.map((item) => <div className='cursor-pointer flex space-x-3 item-center'>
+          {navigationMenu.map((item) => 
+          <div key={item.title} onClick={() => handleNavigate(item)} className='cursor-pointer flex space-x-3 item-center'>
             {item.icon}
             <p className='text-xl'>{item.title}</p>
           </div>)}
@@ -44,8 +53,8 @@ export const Sidebar = () => {
 
             <Avatar src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png' />
             <div>
-              <p className='font-bold'>Sankalp</p>
-              <p className='opacity-70'>@sankalp</p>
+              <p className='font-bold'>{auth.user?.firstName+ " " + auth.user?.lastName}</p>
+              <p className='opacity-70'>@{auth.user?.firstName.toLowerCase() + "_" + auth.user?.lastName.toLowerCase()}</p>
             </div>
           </div>
             <Button

@@ -8,7 +8,7 @@ import CreateReelsForm from '../../components/Reels/CreateReelsForm';
 import Profile from '../Profile/Profile';
 import HomeRight from '../../components/HomeRight/HomeRight';
 
-export const HomePage = () => {
+const HomePage = () => {
   const location = useLocation();
   return (
     <div className='px-20'>
@@ -28,17 +28,17 @@ export const HomePage = () => {
 
           <Routes>
             <Route index element={<Middlepart/>}/>
-            <Route path='/home' element={<Middlepart/>}/>
-            <Route path='/reels' element={<Reels />} />
-            <Route path='/create-reels' element={<CreateReelsForm/>}/>
-            <Route path='/profile/:id' element={<Profile/>}/>
+            {/* <Route path='/home' element={<Middlepart/>}/> */}
+            <Route path='reels' element={<Reels />} />
+            <Route path='create-reels' element={<CreateReelsForm/>}/>
+            <Route path='profile' element={<Profile/>}/>
           </Routes>
         </Grid>
-        {location.pathname==="/" && <Grid item lg={3} className="relative">
+        {location.pathname==="/home" && (<Grid item lg={3} className="relative">
           <div className="sticky top-0 w-full">
             <HomeRight/>
           </div>
-        </Grid>}
+        </Grid>)}
 
       </Grid>
 

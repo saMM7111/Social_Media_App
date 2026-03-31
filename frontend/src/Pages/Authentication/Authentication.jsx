@@ -4,9 +4,18 @@ import Register from './Register'
 import Login from './Login'
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 const Authentication = () => {
+  const auth = useSelector((state) => state.auth);
+
+
+  if (auth.user) {
+    return <Navigate to="/home" replace />
+  }
+
   return (
     <div className='min-h-screen bg-white flex flex-col md:flex-row'>
       <div className='w-full md:w-7/12 h-64 md:h-screen overflow-hidden'>

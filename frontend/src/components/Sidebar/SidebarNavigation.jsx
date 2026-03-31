@@ -12,42 +12,42 @@ export const navigationMenu = [
   {
     title: 'Home',
     icon: <HomeIcon/>,
-    path: '/'
+    path: '/home'
   },
    {
     title: 'Reels',
     icon: <ExploreIcon/>,
-    path: '/'
+    path: '/home/reels'
   },
    {
     title: 'Create Reels',
     icon: <ControlePointIcon/>,
-    path: '/'
+    path: '/home/create-reels'
   },
    {
     title: 'Notifications',
     icon: <NotificationIcon/>,
-    path: '/'
+    path: '/home/notifications'
   },
    {
     title: 'Message',
     icon: <MessageIcon/>,
-    path: '/'
+    path: '/message'
   },
    {
     title: 'List',
     icon: <ListAltIcon/>,
-    path: '/'
+    path: '/home/list'
   },
    {
     title: 'Communities',
     icon: <GroupIcon/>,
-    path: '/'
+    path: '/home/communities'
   },
    {
     title: 'Profile',
     icon: <AccountCircleIcon/>,
-    path: '/'
+    path: '/home/profile'
   }
 ]
 

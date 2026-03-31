@@ -1,6 +1,10 @@
 import React from 'react'
 import { Avatar } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getProfileAction } from '../../Redux/Auth/authAction';
 
 const StoryCircle = () => {
   return (

@@ -8,6 +8,8 @@ import Tab from '@mui/material/Tab';
 import Postcard from '../../components/Post/Postcard';
 import { Card } from '@mui/material';
 import UserReelsCard from '../../components/Reels/UserReelsCard';
+import { useSelector } from 'react-redux';
+import ProfileModel from './ProfileModel';
 
 
 const tabs = [
@@ -20,6 +22,10 @@ const posts = [1,1,1,1];
 const reels = [1,1,1,1];
 const savedPosts = [1,1,1,1];
 const Profile = () => {
+   const [open, setOpen] = React.useState(false);
+  const handleOpenProfileModel = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const auth = useSelector((store) => store.auth);
   const [value, setValue] = React.useState('posts');
 
   const handleChange = (event, newValue) => {
@@ -38,13 +44,15 @@ const Profile = () => {
           src='https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg'
           />
 
-          {true? <Button sx={{borderRadius:"20px"}} variant='outlined'>Edit Profile</Button>: <Button variant='contained'>Follow</Button>}
+          {true
+            ? <Button onClick={handleOpenProfileModel} sx={{borderRadius:"20px"}} variant='outlined'>Edit Profile</Button>
+            : <Button variant='contained'>Follow</Button>}
         </div>
         <div className='p-5'>
 
           <div>
-            <h1 className='py-1 font-bold text-xl'>John Doe</h1>
-            <p>@jhonDoe</p>
+            <h1 className='py-1 font-bold text-xl'>{auth.user?.firstName + " " + auth.user?.lastName}</h1>
+            <p>@{auth.user?.firstName.toLowerCase() + "_" + auth.user?.lastName.toLowerCase()}</p>
           </div>
           <div className='flex gap-5 items-center py-3'>
             <span>41 posts</span>
@@ -63,7 +71,7 @@ const Profile = () => {
                 onChange={handleChange}
                 aria-label="wrapped label tabs example"
               >
-                {tabs.map((item)=><Tab value={item.value} label={item.name} wrapped/>)}
+                {tabs.map((item)=><Tab key={item.value} value={item.value} label={item.name} wrapped/>)}
               </Tabs>
             </Box>
             <div className='flex justify-center'>
@@ -93,6 +101,9 @@ const Profile = () => {
             </div>
           </section>
         </div>
+        <section>
+          <ProfileModel open={open} handleClose={handleClose}/>
+        </section>
       </div>
     </Card>
   )
